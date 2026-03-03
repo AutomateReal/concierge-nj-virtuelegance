@@ -155,6 +155,19 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
+        const navLinks = [
+            { name: 'Services', href: 'services' },
+            { name: 'About', href: 'about' },
+            { name: 'Why Us', href: 'why-us' },
+            { name: 'Reviews', href: 'reviews' }
+        ];
+
+        const reviews = [
+            { text: '"Ann truly transformed how I manage my small business. As a VA, she is impeccable with details and so incredibly proactive. I finally have time back in my day."', name: 'Sarah M.', location: 'Princeton, NJ' },
+            { text: '"I needed a document notarized at the last minute and Ann came through instantly. Professional, warm, and highly convenient. Highly recommend her mobile notary service!"', name: 'David R.', location: 'Monmouth Junction, NJ' },
+            { text: '"Ann officiated our vow renewal and it was nothing short of magical. She took the time to understand our love story and crafted a ceremony that felt completely us."', name: 'Jessica & Tom', location: 'New Brunswick, NJ' }
+        ];
+
         const App = () => {
             const [isScrolled, setIsScrolled] = useState(false);
             const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -222,18 +235,6 @@
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
             };
 
-            const navLinks = [
-                { name: 'Services', href: 'services' },
-                { name: 'About', href: 'about' },
-                { name: 'Why Us', href: 'why-us' },
-                { name: 'Reviews', href: 'reviews' }
-            ];
-
-            const reviews = [
-                { text: '"Ann truly transformed how I manage my small business. As a VA, she is impeccable with details and so incredibly proactive. I finally have time back in my day."', name: 'Sarah M.', location: 'Princeton, NJ' },
-                { text: '"I needed a document notarized at the last minute and Ann came through instantly. Professional, warm, and highly convenient. Highly recommend her mobile notary service!"', name: 'David R.', location: 'Monmouth Junction, NJ' },
-                { text: '"Ann officiated our vow renewal and it was nothing short of magical. She took the time to understand our love story and crafted a ceremony that felt completely us."', name: 'Jessica & Tom', location: 'New Brunswick, NJ' }
-            ];
 
             return (
                 <div className="flex flex-col min-h-screen">
