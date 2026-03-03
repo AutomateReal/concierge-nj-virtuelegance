@@ -83,16 +83,15 @@
             return (
                 <div className="flex flex-col min-h-screen">
                     {/* <!-- SECTION: NAVIGATION START --> */}
-                    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-50/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-4 sm:py-6 text-white'}`}>
+                    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-50/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-4 sm:py-6'}`}>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex justify-between items-center">
-                                <div className="flex-shrink-0 cursor-pointer flex items-center" onClick={() => window.scrollTo(0, 0)}>
-                                    <img
-                                        src="logo.jpg"
-                                        alt="VirtuElegance Solutions Logo"
-                                        className={`h-12 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
-                                    />
-                                    {/* <h1 className={`font-serif text-2xl font-bold ${isScrolled ? 'text-emerald-900' : 'text-white'}`}>VirtuElegance</h1> */}
+                                <div className="flex-shrink-0 cursor-pointer flex items-center group" onClick={() => window.scrollTo(0, 0)}>
+                                    <div className="flex items-baseline">
+                                        <span className="font-serif text-2xl sm:text-3xl font-bold text-[#D97706]">VirtuElegance</span>
+                                        <span className={`font-sans font-extralight text-lg sm:text-xl ml-1 transition-colors duration-300 ${isScrolled ? 'text-emerald-900' : 'text-[#FAFAF7]'}`}>Solutions</span>
+                                        <span className="w-1.5 h-1.5 bg-[#D97706] rounded-full ml-1 md:ml-2"></span>
+                                    </div>
                                 </div>
                                 <div className="hidden md:flex space-x-8 items-center">
                                     {navLinks.map(link => (
