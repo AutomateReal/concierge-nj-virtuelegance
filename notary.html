@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Notary Central NJ | Same-Day Notarization | VirtuElegance Solutions</title>
+    <meta name="description"
+        content="Fast and reliable mobile notary services in Central New Jersey. We come to you in Middlesex, Somerset, and Mercer counties. Same-day appointments available.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 900: '#065F46', 800: '#044e39' },
+                        gold: { 500: '#D97706', 400: '#fbbf24' },
+                        ivory: { 50: '#FEFEF9', 100: '#FAFAF7' },
+                        mint: { 50: '#F0FDF4', 100: '#ECFDF5' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FEFEF9;
+            color: #374151;
+        }
+
+        .mint-gradient {
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+        }
+    </style>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="antialiased font-sans bg-ivory-50 text-gray-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const App = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 80);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <div className="flex flex-col min-h-screen">
+                    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-100 shadow-md py-4' : 'bg-transparent py-6'}`}>
+                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+                            <a href="index.html" className="font-serif text-2xl font-bold text-[#D97706]">VirtuElegance <span className="text-emerald-900 font-sans font-light">Solutions</span></a>
+                            <div className="hidden md:flex space-x-8 items-center">
+                                <a href="index.html" className="text-sm font-medium hover:text-gold-500">Home</a>
+                                <a href="virtual-assistant.html" className="text-sm font-medium hover:text-gold-500">Virtual Assistant</a>
+                                <a href="officiant.html" className="text-sm font-medium hover:text-gold-500">Officiant</a>
+                                <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-900 text-white px-5 py-2 rounded-full text-sm">Contact</button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <section className="pt-32 pb-20 mint-gradient">
+                        <div className="max-w-5xl mx-auto px-4 text-center">
+                            <h1 className="font-serif text-4xl md:text-6xl font-bold text-emerald-900 mb-6 text-balance">Mobile Notary Public in Central New Jersey (Same-Day Availability)</h1>
+                            <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">Professional, reliable notarization at your doorstep. We travel to you, so you don't have to wait.</p>
+                        </div>
+                    </section>
+
+                    <section className="py-20 bg-white">
+                        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-start">
+                            <div className="space-y-8">
+                                <div className="p-8 bg-ivory-100 rounded-3xl border border-emerald-50">
+                                    <h2 className="font-serif text-2xl font-bold text-emerald-900 mb-4">Counties We Serve</h2>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Middlesex", "Somerset", "Mercer", "Union (Partial)"].map((county, i) => (
+                                            <span key={i} className="bg-emerald-900 text-white px-4 py-2 rounded-full text-sm font-bold">{county}</span>
+                                        ))}
+                                    </div>
+                                    <p className="text-sm text-gray-500 mt-4 leading-relaxed">Available for appointments at homes, offices, hospitals, nursing homes, and local coffee shops.</p>
+                                </div>
+
+                                <div className="p-8 bg-white rounded-3xl border border-emerald-100 shadow-sm">
+                                    <h3 className="font-serif text-2xl font-bold text-emerald-900 mb-4">Common Documents</h3>
+                                    <ul className="grid grid-cols-2 gap-y-2 text-gray-600 text-sm font-light">
+                                        <li>• Power of Attorney</li>
+                                        <li>• Wills & Trusts</li>
+                                        <li>• Real Estate Docs</li>
+                                        <li>• Affidavits</li>
+                                        <li>• Healthcare Proxies</li>
+                                        <li>• Deeds & Mortgages</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="space-y-8">
+                                <div className="bg-emerald-50 p-10 rounded-3xl border border-emerald-100">
+                                    <h2 className="font-serif text-2xl font-bold text-emerald-900 mb-6">What to Prepare</h2>
+                                    <div className="space-y-6">
+                                        <div className="flex items-start space-x-4">
+                                            <div className="w-8 h-8 bg-emerald-900 text-white rounded-full flex shrink-0 items-center justify-center font-bold">1</div>
+                                            <div>
+                                                <h4 className="font-bold text-emerald-900">Valid Photo ID</h4>
+                                                <p className="text-sm text-gray-600">Current government-issued ID (Driver's License, Passport).</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start space-x-4">
+                                            <div className="w-8 h-8 bg-emerald-900 text-white rounded-full flex shrink-0 items-center justify-center font-bold">2</div>
+                                            <div>
+                                                <h4 className="font-bold text-emerald-900">Unsigned Documents</h4>
+                                                <p className="text-sm text-gray-600">Documents must be signed in the physical presence of the notary.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start space-x-4">
+                                            <div className="w-8 h-8 bg-emerald-900 text-white rounded-full flex shrink-0 items-center justify-center font-bold">3</div>
+                                            <div>
+                                                <h4 className="font-bold text-emerald-900">All Parties Present</h4>
+                                                <p className="text-sm text-gray-600">Ensure any witnesses or co-signers are present with IDs.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-8 bg-gold-500 rounded-3xl text-white">
+                                    <h4 className="font-bold uppercase tracking-widest text-sm mb-2 opacity-80">Pricing Anchor</h4>
+                                    <p className="text-lg font-serif">Mobile rates starting at $[X] + Statutorily set fee per signature.</p>
+                                    <p className="text-xs mt-2 opacity-70">Travel fees vary by distance and time of day.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="py-20 bg-ivory-100 border-t border-gray-200">
+                        <div className="max-w-4xl mx-auto px-4 text-center">
+                            <h2 className="font-serif text-3xl font-bold text-emerald-900 mb-4">Hours of Operation</h2>
+                            <p className="text-gray-600 mb-8">Monday – Friday: 9 AM - 6 PM | Saturday: By Appointment Only</p>
+                            <div className="flex justify-center space-x-6">
+                                <a href="tel:646-535-0085" className="bg-emerald-900 text-white px-8 py-4 rounded-full font-bold hover:bg-gold-500 transition-colors shadow-lg flex items-center">
+                                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                    Book Notary Now
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer className="bg-white py-12 border-t border-gray-100">
+                        <div className="max-w-7xl mx-auto px-4 text-center">
+                            <p className="font-serif text-xl font-bold text-emerald-900">VirtuElegance Solutions</p>
+                            <p className="text-gray-500 text-sm mt-2">Commissioned Notary Public in NJ | Error & Omission Insured</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

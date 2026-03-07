@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wedding Officiant Central NJ | Personalized Ceremonies | VirtuElegance Solutions</title>
+    <meta name="description"
+        content="Your story, your ceremony. Professional wedding officiant services in Central New Jersey. Secular, spiritual, and customized ceremonies for your big day.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 900: '#065F46', 800: '#044e39' },
+                        gold: { 500: '#D97706', 400: '#fbbf24' },
+                        ivory: { 50: '#FEFEF9', 100: '#FAFAF7' },
+                        mint: { 50: '#F0FDF4', 100: '#ECFDF5' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FEFEF9;
+            color: #374151;
+        }
+
+        .mint-gradient {
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+        }
+    </style>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="antialiased font-sans bg-ivory-50 text-gray-800">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const App = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 80);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <div className="flex flex-col min-h-screen font-sans">
+                    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-100 shadow-md py-4' : 'bg-transparent py-6'}`}>
+                        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+                            <a href="index.html" className="font-serif text-2xl font-bold text-[#D97706]">VirtuElegance <span className="text-emerald-900 font-sans font-light">Solutions</span></a>
+                            <div className="hidden md:flex space-x-8 items-center">
+                                <a href="index.html" className="text-sm font-medium hover:text-gold-500">Home</a>
+                                <a href="virtual-assistant.html" className="text-sm font-medium hover:text-gold-500">Virtual Assistant</a>
+                                <a href="notary.html" className="text-sm font-medium hover:text-gold-500">Notary</a>
+                                <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-900 text-white px-5 py-2 rounded-full text-sm">Contact</button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <section className="pt-32 pb-20 mint-gradient">
+                        <div className="max-w-5xl mx-auto px-4 text-center">
+                            <h1 className="font-serif text-4xl md:text-6xl font-bold text-emerald-900 mb-6">Your Story, Your Ceremony: Wedding Officiant in Central New Jersey</h1>
+                            <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">Creating meaningful, personalized ceremonies that reflect your unique love story and vision.</p>
+                        </div>
+                    </section>
+
+                    <section className="py-20 bg-white">
+                        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+                            <div className="order-2 md:order-1">
+                                <h2 className="font-serif text-3xl font-bold text-emerald-900 mb-6 italic">"Ann officiated our vow renewal and it was nothing short of magical. She took the time to understand our love story and crafted a ceremony that felt completely us."</h2>
+                                <p className="text-gray-500 mb-8">— Jessica & Tom, New Brunswick</p>
+
+                                <h3 className="font-bold text-emerald-900 mb-4">Ceremony Styles Covered:</h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {[
+                                        "Traditional Weddings",
+                                        "Secular / Non-Religious",
+                                        "Spiritual Ceremonies",
+                                        "Vow Renewals",
+                                        "Micro-Weddings & Elopements",
+                                        "Civil Ceremonies"
+                                    ].map((style, i) => (
+                                        <div key={i} className="flex items-center space-x-2 text-gray-600 text-sm">
+                                            <div className="w-2 h-2 bg-gold-500 rounded-full"></div>
+                                            <span>{style}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="order-1 md:order-2 bg-ivory-100 p-10 rounded-[3rem] border border-emerald-50 relative overflow-hidden">
+                                <h3 className="font-serif text-2xl font-bold text-emerald-900 mb-6">Our Process</h3>
+                                <div className="space-y-8 relative">
+                                    {[
+                                        { t: "Initial Consultation", d: "A relaxed meeting to discuss your vision, style, and requirements." },
+                                        { t: "Ceremony Draft Review", d: "I draft a script for your review, ensuring every word resonates." },
+                                        { t: "Your Big Day", d: "Professional, warm, and poised officiating for your unforgettable moment." }
+                                    ].map((step, i) => (
+                                        <div key={i} className="relative flex space-x-4">
+                                            <div className="font-serif text-4xl text-gold-500 opacity-30 font-bold shrink-0">0{i + 1}</div>
+                                            <div>
+                                                <h4 className="font-bold text-emerald-900">{step.t}</h4>
+                                                <p className="text-sm text-gray-600 font-light">{step.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="py-20 bg-emerald-900 text-white">
+                        <div className="max-w-4xl mx-auto px-4 text-center">
+                            <h2 className="font-serif text-3xl font-bold mb-6">Investment</h2>
+                            <p className="text-xl font-light opacity-90 mb-2">Ceremony packages starting at $[X].</p>
+                            <p className="text-sm opacity-60 mb-10">Includes initial meeting, custom script development, and administrative handling of your license.</p>
+                            <a href="index.html#contact" className="bg-gold-500 text-white px-10 py-5 rounded-full text-lg font-medium inline-block hover:scale-105 transition-transform shadow-xl">Check Date Availability</a>
+                        </div>
+                    </section>
+
+                    <footer className="bg-white py-12 border-t border-gray-100">
+                        <div className="max-w-7xl mx-auto px-4 text-center">
+                            <p className="font-serif text-xl font-bold text-emerald-900">VirtuElegance Solutions</p>
+                            <p className="text-gray-500 text-sm mt-2">Serving Central New Jersey couples with heart and elegance.</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
