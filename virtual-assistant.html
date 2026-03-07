@@ -81,12 +81,19 @@
                 <div className="flex flex-col min-h-screen">
                     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-100 shadow-md py-4' : 'bg-transparent py-6'}`}>
                         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-                            <a href="index.html" className="font-serif text-2xl font-bold text-[#D97706]">VirtuElegance <span className="text-emerald-900 font-sans font-light">Solutions</span></a>
+                            <a href="index.html" className="flex items-center space-x-3 group">
+                                <img src="logo.jpg" alt="VirtuElegance Solutions – Central New Jersey" className="h-10 w-auto rounded-md shadow-sm group-hover:scale-105 transition-transform" />
+                                <div className="flex flex-col text-left">
+                                    <span className="font-serif text-xl font-bold text-[#D97706] leading-none text-left">VirtuElegance</span>
+                                    <span className="text-emerald-900 font-sans font-light text-[10px] tracking-widest uppercase text-left">Solutions</span>
+                                </div>
+                            </a>
                             <div className="hidden md:flex space-x-8 items-center">
                                 <a href="index.html" className="text-sm font-medium hover:text-gold-500">Home</a>
-                                <a href="notary.html" className="text-sm font-medium hover:text-gold-500">Notary</a>
+                                <a href="virtual-assistant.html" className="text-sm font-bold text-emerald-900 border-b-2 border-emerald-900">Virtual Assistant</a>
+                                <a href="notary.html" className="text-sm font-medium hover:text-gold-500">Mobile Notary</a>
                                 <a href="officiant.html" className="text-sm font-medium hover:text-gold-500">Officiant</a>
-                                <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-900 text-white px-5 py-2 rounded-full text-sm">Contact</button>
+                                <button onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })} className="bg-emerald-900 text-white px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider">Book</button>
                             </div>
                         </div>
                     </nav>
