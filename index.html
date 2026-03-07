@@ -185,12 +185,12 @@
         const { useState, useEffect } = React;
 
         const navLinks = [
-            { name: 'Virtual Assistant', href: 'va-service' },
-            { name: 'Mobile Notary', href: 'notary-service' },
-            { name: 'Officiant', href: 'officiant-service' },
-            { name: 'Reviews', href: 'reviews' },
-            { name: 'Contact', href: 'contact' },
-            { name: 'About', href: 'about' }
+            { name: 'Home', href: 'index.html' },
+            { name: 'Virtual Assistant', href: 'virtual-assistant.html' },
+            { name: 'Mobile Notary', href: 'notary.html' },
+            { name: 'Officiant', href: 'officiant.html' },
+            { name: 'Reviews', href: 'index.html#reviews' },
+            { name: 'Contact', href: 'index.html#contact' }
         ];
 
         const reviews = [
@@ -273,24 +273,42 @@
                     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-ivory-100/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-4 sm:py-6'}`}>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex justify-between items-center">
-                                <a href="index.html" className="flex items-center space-x-3 group cursor-pointer" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                                <a href="index.html" className="flex items-center space-x-3 group cursor-pointer">
                                     <img src="logo.jpg" alt="VirtuElegance Solutions – Central New Jersey" className="h-10 w-auto rounded-md shadow-sm group-hover:scale-105 transition-transform" />
                                     <div className="flex flex-col">
                                         <span className="font-serif text-xl font-bold text-[#D97706] leading-none">VirtuElegance</span>
-                                        <span className="text-emerald-900 font-sans font-light text-[10px] tracking-widest uppercase">Solutions</span>
+                                        <span className="text-emerald-900 font-sans font-light text-[10px] tracking-widest uppercase mb-0.5">Solutions</span>
+                                        <span className="text-[8px] text-emerald-900/60 font-medium uppercase tracking-tighter">Serving Central New Jersey</span>
                                     </div>
                                 </a>
                                 <div className="hidden md:flex space-x-8 items-center">
-                                    {navLinks.map(link => (
-                                        <button
-                                            key={link.name}
-                                            onClick={() => scrollTo(link.href)}
-                                            className={`text-sm font-medium hover:text-gold-500 transition-colors relative group py-2 ${isScrolled ? 'text-gray-800' : 'text-emerald-900'}`}
-                                        >
-                                            {link.name}
-                                            <span className={`absolute bottom-0 left-0 h-1 bg-gold-500 transition-all duration-300 rounded-full ${activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                                        </button>
-                                    ))}
+                                    {navLinks.map(link => {
+                                        const isAnchorOnHome = link.href.includes('#');
+
+                                        return (
+                                            <a
+                                                key={link.name}
+                                                href={link.href}
+                                                className={`text-xs font-bold uppercase tracking-widest hover:text-gold-500 transition-colors relative group py-2 ${isScrolled ? 'text-gray-800' : 'text-emerald-900'}`}
+                                                onClick={(e) => {
+                                                    if (link.href === 'index.html' && window.location.pathname.endsWith('index.html')) {
+                                                        e.preventDefault();
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                    } else if (isAnchorOnHome && window.location.pathname.endsWith('index.html')) {
+                                                        e.preventDefault();
+                                                        const id = link.href.split('#')[1];
+                                                        scrollTo(id);
+                                                    }
+                                                }}
+                                            >
+                                                {link.name}
+                                                <span className={`absolute bottom-0 left-0 h-0.5 bg-gold-500 transition-all duration-300 rounded-full ${(link.name === 'Home' && !window.location.hash) ||
+                                                    (isAnchorOnHome && activeSection === link.href.split('#')[1])
+                                                    ? 'w-full' : 'w-0 group-hover:w-full'
+                                                    }`}></span>
+                                            </a>
+                                        );
+                                    })}
                                     <button onClick={() => scrollTo('contact')} className="bg-emerald-900 hover:bg-gold-500 text-ivory-50 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md active:scale-95 uppercase tracking-wider">
                                         Book
                                     </button>
@@ -309,39 +327,43 @@
                             </div>
                         </div>
                         {/* Mobile Menu */}
-                        {isMobileMenuOpen && (
-                            <div className="md:hidden bg-ivory-100 text-gray-800 shadow-2xl absolute w-full left-0 mt-4 py-6 px-4 flex flex-col space-y-4 border-b border-gray-100 animate-in fade-in slide-in-from-top-4 duration-300">
-                                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-b border-gray-100 shadow-xl">
-                                    <div className="flex flex-col space-y-2 mb-4 p-2 bg-ivory-50 rounded-xl">
-                                        <a href="tel:646-535-0085" className="flex items-center justify-center space-x-2 bg-emerald-900 text-white font-bold py-3 rounded-lg">
-                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                                            <span>Call Now</span>
-                                        </a>
-                                        <button onClick={() => { scrollTo('contact'); setIsMobileMenuOpen(false); }} className="bg-gold-500 text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform uppercase tracking-wider text-sm">
-                                            Book Appointment
-                                        </button>
+                        {
+                            isMobileMenuOpen && (
+                                <div className="md:hidden bg-ivory-100 text-gray-800 shadow-2xl absolute w-full left-0 mt-4 py-6 px-4 flex flex-col space-y-4 border-b border-gray-100 animate-in fade-in slide-in-from-top-4 duration-300">
+                                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-b border-gray-100 shadow-xl">
+                                        <div className="flex flex-col space-y-2 mb-4 p-2 bg-ivory-50 rounded-xl">
+                                            <a href="tel:646-535-0085" className="flex items-center justify-center space-x-2 bg-emerald-900 text-white font-bold py-3 rounded-lg">
+                                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                                <span>Call Now</span>
+                                            </a>
+                                            <button onClick={() => { scrollTo('contact'); setIsMobileMenuOpen(false); }} className="bg-gold-500 text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform uppercase tracking-wider text-sm">
+                                                Book Appointment
+                                            </button>
+                                        </div>
+                                        {navLinks.map((link) => (
+                                            <a
+                                                key={link.name}
+                                                href={link.href}
+                                                className="block px-3 py-3 rounded-md text-base font-bold text-gray-700 hover:text-emerald-900 hover:bg-emerald-50 transition-colors uppercase tracking-wider"
+                                                onClick={(e) => {
+                                                    if (link.href.includes('#') && window.location.pathname.endsWith('index.html')) {
+                                                        e.preventDefault();
+                                                        setIsMobileMenuOpen(false);
+                                                        scrollTo(link.href.split('#')[1]);
+                                                    }
+                                                }}
+                                            >
+                                                {link.name}
+                                            </a>
+                                        ))}
                                     </div>
-                                    {navLinks.map((link) => (
-                                        <a
-                                            key={link.name}
-                                            href={`#${link.href}`}
-                                            className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-900 hover:bg-emerald-50 transition-colors"
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                setIsMobileMenuOpen(false);
-                                                scrollTo(link.href);
-                                            }}
-                                        >
-                                            {link.name}
-                                        </a>
-                                    ))}
                                 </div>
-                            </div>
-                        )}
-                    </nav>
+                            )
+                        }
+                    </nav >
 
                     {/* HERO */}
-                    <section className="relative mint-gradient text-[#1C1917] min-h-screen flex items-center pt-24 overflow-hidden">
+                    < section className="relative mint-gradient text-[#1C1917] min-h-screen flex items-center pt-24 overflow-hidden" >
                         <div className="absolute inset-0 overflow-hidden pointer-events-none">
                             <svg className="absolute w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -417,10 +439,10 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* SERVICES */}
-                    <section id="services" className="py-24 bg-white">
+                    < section id="services" className="py-24 bg-white" >
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center mb-16">
                                 <h2 className="font-serif text-4xl text-emerald-900 font-bold mb-4">Our Services</h2>
@@ -477,10 +499,10 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* ABOUT */}
-                    <section id="about" className="py-24 bg-ivory-100">
+                    < section id="about" className="py-24 bg-ivory-100" >
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="grid lg:grid-cols-2 gap-16 items-center">
                                 <div>
@@ -505,9 +527,9 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
                     {/* WHY US */}
-                    <section id="why-us" className="py-24 bg-white">
+                    < section id="why-us" className="py-24 bg-white" >
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center mb-16">
                                 <h2 className="font-serif text-4xl text-emerald-900 font-bold mb-4">Why Choose VirtuElegance</h2>
@@ -547,15 +569,15 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* REVIEWS */}
-                    <section id="reviews" className="py-24 bg-ivory-100">
+                    < section id="reviews" className="py-24 bg-ivory-100" >
                         {/* ... results of previous edits ... */}
-                    </section>
+                    </section >
 
                     {/* FAQ */}
-                    <section className="py-24 bg-white border-t border-gray-100">
+                    < section className="py-24 bg-white border-t border-gray-100" >
                         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center mb-16">
                                 <h2 className="font-serif text-4xl text-emerald-900 font-bold mb-4">Frequently Asked Questions</h2>
@@ -575,10 +597,10 @@
                                 ))}
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* CONTACT */}
-                    <section id="contact" className="py-24 bg-white">
+                    < section id="contact" className="py-24 bg-white" >
                         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center mb-12">
                                 <h2 className="font-serif text-4xl text-emerald-900 font-bold mb-4">Let's Connect</h2>
@@ -657,24 +679,54 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
-                    {/* FOOTER */}
-                    <footer className="bg-ivory-100 text-gray-600 py-12 border-t border-gray-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-                            <h2 className="font-serif text-2xl font-bold text-emerald-900 mb-4">VirtuElegance Solutions</h2>
-                            <p className="italic text-gold-500 mb-6 font-medium">"Rooted in Service. Guided by Purpose."</p>
-                            <div className="flex items-center justify-center space-x-6 mb-8 text-sm">
-                                <span className="text-emerald-900">646-535-0085</span>
-                                <span className="w-1 h-1 bg-emerald-900 rounded-full"></span>
-                                <span className="text-emerald-900 font-medium">Serving Central New Jersey</span>
+                    <footer className="bg-ivory-100 text-gray-600 py-16 border-t border-gray-200">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="grid md:grid-cols-4 gap-12 mb-12">
+                                <div className="col-span-1 md:col-span-2">
+                                    <div className="flex items-center space-x-3 mb-6">
+                                        <img src="logo.jpg" alt="VirtuElegance Solutions" className="h-10 w-auto rounded-md" />
+                                        <div className="flex flex-col">
+                                            <span className="font-serif text-xl font-bold text-emerald-900 leading-none">VirtuElegance</span>
+                                            <span className="text-emerald-900 font-sans font-light text-[10px] tracking-widest uppercase">Solutions</span>
+                                        </div>
+                                    </div>
+                                    <p className="italic text-gold-500 font-medium mb-6">"Rooted in Service. Guided by Purpose."</p>
+                                    <p className="text-gray-500 font-light max-w-sm">Professional concierge services for busy executives and local milestones across Central New Jersey.</p>
+                                </div>
+                                <div>
+                                    <h4 className="font-serif text-emerald-900 font-bold mb-6">Quick Links</h4>
+                                    <ul className="space-y-4 text-sm font-medium">
+                                        {navLinks.map(link => (
+                                            <li key={link.name}>
+                                                <a href={link.href} className="hover:text-gold-500 transition-colors uppercase tracking-widest text-[10px]">{link.name}</a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 className="font-serif text-emerald-900 font-bold mb-6">Contact & Area</h4>
+                                    <ul className="space-y-4 text-sm font-light">
+                                        <li className="flex items-center space-x-3">
+                                            <svg className="w-5 h-5 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                            <span className="text-emerald-900 font-medium">646-535-0085</span>
+                                        </li>
+                                        <li className="flex items-center space-x-3 text-gold-500 font-medium">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                            <span>Middlesex, Somerset, & Mercer Counties</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <p className="text-xs text-gray-500 uppercase tracking-widest">© 2026 VirtuElegance Solutions. All rights reserved.</p>
+                            <div className="pt-8 border-t border-gray-200 text-center">
+                                <p className="text-xs text-gray-400 uppercase tracking-[0.2em]">© 2026 VirtuElegance Solutions. Serving Central New Jersey.</p>
+                            </div>
                         </div>
                     </footer>
 
                     {/* Sticky Mobile Bar */}
-                    <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] z-[60] animate-bounce-subtle">
+                    < div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] z-[60] animate-bounce-subtle" >
                         <div className="bg-emerald-900/95 backdrop-blur-md rounded-full shadow-2xl p-2 flex items-center justify-between border border-emerald-800/50">
                             <a href="tel:646-535-0085" className="flex-1 flex items-center justify-center space-x-2 text-white font-bold py-3 border-r border-emerald-800">
                                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
@@ -688,8 +740,8 @@
                                 <span>Text</span>
                             </a>
                         </div>
-                    </div>
-                </div>
+                    </div >
+                </div >
             );
         };
 
